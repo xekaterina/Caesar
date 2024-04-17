@@ -10,7 +10,7 @@ import (
 )
 
 func caesarCipher(text string, shift int) string {
-	shift = (shift%26 + 26) % 26
+	shift %= 26
 	var result strings.Builder
 	result.Grow(len(text))
 
