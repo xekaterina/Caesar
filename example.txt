@@ -1,0 +1,1 @@
+This is an example text that will be encrypted or decrypted by the program.

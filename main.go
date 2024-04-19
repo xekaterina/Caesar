@@ -28,6 +28,7 @@ func caesarCipher(text string, shift int) string {
 
 func main() {
 	fmt.Print("Enter password: ")
+
 	bytePassword, err := term.ReadPassword(int(os.Stdin.Fd()))
 	if err != nil {
 		fmt.Println("Failed to read password:", err)
@@ -36,7 +37,8 @@ func main() {
 	fmt.Println("\nPassword accepted.")
 
 	password := string(bytePassword)
-	expectedPassword := "secret123" // Здесь ваш секретный пароль
+
+	expectedPassword := "secret123" // Здесь секретный пароль
 
 	if password != expectedPassword {
 		fmt.Println("Invalid password. Access denied.")
@@ -44,15 +46,19 @@ func main() {
 	}
 
 	reader := bufio.NewReader(os.Stdin)
+
 	fmt.Print("Enter file path: ")
+
 	filePath, err := reader.ReadString('\n')
 	if err != nil {
 		fmt.Println("Failed to read file path:", err)
 		return
 	}
+
 	filePath = strings.TrimSpace(filePath)
 
 	fmt.Print("Choose mode (encrypt/decrypt): ")
+
 	mode, err := reader.ReadString('\n')
 	if err != nil {
 		fmt.Println("Failed to read mode:", err)
@@ -73,6 +79,5 @@ func main() {
 	}
 
 	result := caesarCipher(text, shift)
-	fmt.Println("Result:")
-	fmt.Println(result)
+	fmt.Println("Result:", result)
 }
